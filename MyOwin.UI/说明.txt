@@ -1,0 +1,4 @@
+﻿nuget依赖
+Microsoft.Owin.Host.SystemWeb
+
+web下必须先安装Microsoft.Owin.Host.SystemWeb，否则即便你新建项中有Owin Startup项，但是还是不会走Owin流程。

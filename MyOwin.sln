@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyOwin.UI", "MyOwin.UI\MyOwin.UI.csproj", "{39464040-DE95-4DC8-855A-1CF4A4814B35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyOwin.Core", "MyOwin.Core\MyOwin.Core.csproj", "{2A356C33-3AA5-422F-A42A-D53F8DE14476}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39464040-DE95-4DC8-855A-1CF4A4814B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39464040-DE95-4DC8-855A-1CF4A4814B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39464040-DE95-4DC8-855A-1CF4A4814B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39464040-DE95-4DC8-855A-1CF4A4814B35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A356C33-3AA5-422F-A42A-D53F8DE14476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A356C33-3AA5-422F-A42A-D53F8DE14476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A356C33-3AA5-422F-A42A-D53F8DE14476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A356C33-3AA5-422F-A42A-D53F8DE14476}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
