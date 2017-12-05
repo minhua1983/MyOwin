@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Owin.Hosting;
+using System.Reflection;
+using Microsoft.Owin;
+using MyOwin.Core.MyContainer;
+using MyOwin.Core.MyService;
 
 namespace MyOwin.Core
 {
@@ -19,7 +23,17 @@ namespace MyOwin.Core
 
             using (WebApp.Start<Startup>(startOptions))
             {
-                Console.WriteLine("started...");
+                Console.WriteLine("application is started...");
+                Console.WriteLine("service is registed...");
+                //*把MyService下面的服务类注册到容器中
+                Container _container = Container.GetInstance();
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                List<Type> typeList = assembly.GetTypes().Where(t => t.Namespace.StartsWith("MyOwin.Core.MyService") == true).ToList();
+                typeList.ForEach(type =>
+                {
+                    _container.Register(type);
+                });
+                //*/
                 Console.ReadLine();
             }
         }

@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyOwin.Core.Page
+namespace MyOwin.Core
 {
-    public class Article
+    public class BaseRequest
     {
-        public void List()
-        {
-
-        }
     }
 }

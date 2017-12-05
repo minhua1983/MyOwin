@@ -49,6 +49,10 @@
       <HintPath>..\packages\Microsoft.Owin.Hosting.3.1.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
@@ -63,9 +67,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRequest.cs" />
+    <Compile Include="BaseResponse.cs" />
+    <Compile Include="BaseService.cs" />
+    <Compile Include="IService.cs" />
     <Compile Include="MyContainer\Container.cs" />
     <Compile Include="MyContainer\IContainer.cs" />
-    <Compile Include="Page\Article.cs" />
+    <Compile Include="MyMiddleware\AuthenticationCheckMiddleware.cs" />
+    <Compile Include="MyMiddleware\ModelCheckMiddleware.cs" />
+    <Compile Include="MyModel\ListProductModel.cs" />
+    <Compile Include="MyModel\ListUserModel.cs" />
+    <Compile Include="MyService\ListProductService.cs" />
+    <Compile Include="MyService\ListUserService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -77,6 +90,7 @@
   <ItemGroup>
     <Content Include="说明.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
