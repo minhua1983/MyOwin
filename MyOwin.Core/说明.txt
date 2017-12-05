@@ -1,3 +1,7 @@
 ﻿nuget依赖
 
 Microsoft.Owin.SelfHost
+
+引用
+System.ComponentModel.DataAnnotations;
+System.Configuration;

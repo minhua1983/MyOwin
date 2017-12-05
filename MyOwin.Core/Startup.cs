@@ -20,54 +20,36 @@ namespace MyOwin.Core
         public void Configuration(IAppBuilder app)
         {
             // 有关如何配置应用程序的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=316888
+            //请求初始化
+            app.Use<RequestInitializationMiddleware>();
+            //注册验证检查的中间件
             app.Use<AuthenticationCheckMiddleware>();
+            //注册模型验证的中间件
             app.Use<ModelCheckMiddleware>();
+            //最终运行的中间件，仔细看Run方法的介绍，此方法之后就不会再调用之后的中间件了
             app.Run(CallService);
         }
 
-        public Task CallService(IOwinContext iOwinContext)
+        public Task CallService(IOwinContext context)
         {
-            //设置输出格式
-            iOwinContext.Response.ContentType = "application/json";
-            //获取请求路径（此方法不带任何querystring参数，连?都不包含）
-            string path = iOwinContext.Request.Path.Value;
             //定义一个空对象
             string json = "{}";
-            //尝试清空一下最后的一个“/”符号
-            if (path.EndsWith("/")) path = path.Substring(0, path.Length - 1);
-            //如果还有“/”符号
-            if (path.IndexOf(@"/") >= 0)
+            //获取服务对象
+            Type type = context.Get<Type>("ServiceType");
+            //如果服务类存在
+            if (type != null)
             {
-                //分割path
-                string[] pathArray = path.Split('/');
-                //获取服务名称
-                string serviceName = pathArray[pathArray.Length - 1];
-                //获取服务类
-                Type type = Type.GetType("MyOwin.Core.MyService." + serviceName, false, true);
-                //如果服务类存在
-                if (type != null)
-                {
-                    //object requestModel = null;
-                    string content = "";
-                    //获取请求体内容原生是Request.InputStream，Owin中封装成了Request.Body
-                    using (StreamReader reader = new StreamReader(iOwinContext.Request.Body))
-                    {
-                        content = reader.ReadToEnd();
-                    }
-
-                    //获取容器对象
-                    Container _container = Container.GetInstance();
-                    //从容器中获取到实例
-                    dynamic d = _container.Resolve(type);
-                    //执行实例的Ready方法
-                    dynamic result = d.Ready(content);
-                    //将结果序列化成字符串
-                    json = JsonConvert.SerializeObject(result);
-                }
+                string content = context.Get<string>("RequestBodyContent");
+                dynamic d = context.Get<dynamic>("ServiceInstance");
+                
+                //执行实例的Ready方法
+                dynamic result = d.Ready(content);
+                //将结果序列化成字符串
+                json = JsonConvert.SerializeObject(result);
             }
-            //最终输出结果
-            return iOwinContext.Response.WriteAsync(json);
 
+            //最终输出结果
+            return context.Response.WriteAsync(json);
         }
     }
 }

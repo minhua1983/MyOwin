@@ -58,6 +58,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -75,6 +77,7 @@
     <Compile Include="MyContainer\IContainer.cs" />
     <Compile Include="MyMiddleware\AuthenticationCheckMiddleware.cs" />
     <Compile Include="MyMiddleware\ModelCheckMiddleware.cs" />
+    <Compile Include="MyMiddleware\RequestInitializationMiddleware.cs" />
     <Compile Include="MyModel\ListProductModel.cs" />
     <Compile Include="MyModel\ListUserModel.cs" />
     <Compile Include="MyService\ListProductService.cs" />

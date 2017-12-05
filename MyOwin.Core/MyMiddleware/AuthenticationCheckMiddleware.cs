@@ -11,7 +11,6 @@ namespace MyOwin.Core.MyMiddleware
     {
         public AuthenticationCheckMiddleware(OwinMiddleware next) : base(next)
         {
-
         }
 
         public async override Task Invoke(IOwinContext context)

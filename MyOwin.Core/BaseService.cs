@@ -9,6 +9,12 @@ namespace MyOwin.Core
 {
     public class BaseService<TRequest, TResponse> : IService<TRequest, TResponse> where TResponse : BaseResponse, new()
     {
+        public TRequest GetRequestModel(string bodyContent)
+        {
+            TRequest requestModel = JsonConvert.DeserializeObject<TRequest>(bodyContent);
+            return requestModel;
+        }
+
         public TResponse Ready(string bodyContent)
         {
             try
