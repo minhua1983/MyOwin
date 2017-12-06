@@ -15,12 +15,10 @@ namespace MyOwin.Core.MyService
         {
             ListUserResponse responseModel = new ListUserResponse()
             {
-
                 Data = new List<string>(){
                     "minhua",
                     "marcus"
-                },
-                ErrorFlag = true
+                }
             };
             if (requestModel != null) responseModel.Data = responseModel.Data.Take(requestModel.Top).ToList();
             return responseModel;

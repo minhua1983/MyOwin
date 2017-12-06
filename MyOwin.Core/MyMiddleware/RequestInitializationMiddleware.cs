@@ -72,7 +72,7 @@ namespace MyOwin.Core.MyMiddleware
 
                 Console.WriteLine("pre RequestInitializationMiddleware...");
                 await Next.Invoke(context);
-                Console.WriteLine("pre RequestInitializationMiddleware...");
+                Console.WriteLine("post RequestInitializationMiddleware...");
             }
         }
     }
