@@ -4,13 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Owin;
-using MyOwin.Core.MyModel;
 using Newtonsoft.Json;
+using MyOwin.Core.MyModel;
+using MyOwin.Core.MyFilter.Service;
 
 namespace MyOwin.Core.MyService
 {
     public class ListUserService : BaseService<ListUserRequest, ListUserResponse>
     {
+        [MyServiceFilter2]
+        [MyServiceFilter1]
+        [MyServiceFilter3]
         public override ListUserResponse Any(ListUserRequest requestModel)
         {
             ListUserResponse responseModel = new ListUserResponse()

@@ -43,7 +43,7 @@ namespace MyOwin.Core
                 dynamic d = context.Get<dynamic>("ServiceInstance");
                 
                 //执行实例的Ready方法
-                dynamic result = d.Ready(content);
+                dynamic result = d.Ready(content, context);
                 //将结果序列化成字符串
                 json = JsonConvert.SerializeObject(result);
             }
